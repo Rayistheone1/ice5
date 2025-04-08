@@ -101,7 +101,7 @@ begin
 	begin
         -- i_reset into initial state (o_floor 2)
         w_reset <= '1';  wait for k_clk_period;
-            assert w_floor = x"2" report "bad reset" severity failure; 
+            assert w_floor = x"2" report "bad reset" severity error; 
         -- clear reset
 		
 		-- active UP signal
@@ -109,10 +109,10 @@ begin
 		
 		-- go up a floor
         w_stop <= '0';  wait for k_clk_period;
-            assert w_floor = x"3" report "bad up from floor2" severity failure;
+            assert w_floor = x"3" report "bad up from floor2" severity error;
 		-- try waiting on a floor
         w_stop <= '1';  wait for k_clk_period * 2;
-            assert w_floor = x"3" report "bad wait on floor3" severity failure;
+            assert w_floor = x"3" report "bad wait on floor3" severity error;
 		--  go up again
 		
 		-- go back down one floor
